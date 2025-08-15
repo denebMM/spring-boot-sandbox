@@ -22,18 +22,6 @@ public class UsuarioController {
     private JWTUtil jwtUtil;
 
 
-   @RequestMapping(value = "usuarios")
-  public Usuario getUsuario(@PathVariable Long id) {
-          Usuario user= new Usuario();
-          user.setNombre("Deneb");
-           user.setApellido("Moliner");
-           user.setEmail("free@gmail.com");
-           user.setPassword("ooohofosi");
-           user.setId(id);
-            return user;
-
-   }
-
     @RequestMapping(value = "api/usuarios", method= RequestMethod.GET)
     public List<Usuario> getUsuarios(@RequestHeader(value="Authorization") String token) {
         if (!validarToken(token)) { return null; }
@@ -85,4 +73,17 @@ public class UsuarioController {
       return user;
 
    }
+
+    @RequestMapping(value = "usuarios")
+    public Usuario getUsuario(@PathVariable Long id) {
+        Usuario user= new Usuario();
+        user.setNombre("Deneb");
+        user.setApellido("Moliner");
+        user.setEmail("free@gmail.com");
+        user.setPassword("ooohofosi");
+        user.setId(id);
+        return user;
+
+    }
+
 }
